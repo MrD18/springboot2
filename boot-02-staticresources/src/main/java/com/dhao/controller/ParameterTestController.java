@@ -22,7 +22,7 @@ public class ParameterTestController {
                                                     @RequestHeader("User-Agent")String userAgent, //获取单个请求头
                                                     @RequestHeader Map<String,String> header){  //获取所有请求头
 
-        Map<Object, Object> map = new HashMap<>();
+        Map<Object, Object> map = new HashMap<Object, Object>();
         map.put("id",id);
         map.put("username",username);
         map.put("pv",pv);
@@ -42,7 +42,7 @@ public class ParameterTestController {
                                                   //  @CookieValue Cookie cookie //  获取所有cookie的值
     ){
 
-        Map<Object, Object> map = new HashMap<>();
+        Map<Object, Object> map = new HashMap<Object, Object>();
         map.put("age",age);
         map.put("username",username);
         map.put("inters",inters);
@@ -70,7 +70,7 @@ public class ParameterTestController {
     public  BaseRestResponse<String> carsSell(@MatrixVariable("low") Integer low,
                                               @MatrixVariable("brand") List<String> brand,
                                               @PathVariable("path") String path){
-    Map<Object, Object> map = new HashMap<>();
+    Map<Object, Object> map = new HashMap<Object, Object>();
     map.put("low",low);
     map.put("brand",brand);
     map.put("path",path);
@@ -87,7 +87,7 @@ public class ParameterTestController {
     @GetMapping("/boss/{bossId}/{empId}")
     public  Map boss(@MatrixVariable(value = "age",pathVar = "bossId") Integer bossAge,
                      @MatrixVariable(value = "age",pathVar = "empId") Integer empAge){
-        Map<Object, Object> map = new HashMap<>();
+        Map<Object, Object> map = new HashMap<Object, Object>();
         map.put("bossAge",bossAge);
         map.put("empAge",empAge);
         return map;

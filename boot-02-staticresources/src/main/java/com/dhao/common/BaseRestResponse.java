@@ -28,7 +28,7 @@ public class BaseRestResponse<T> {
 
     public static BaseRestResponse success() {
 
-        BaseRestResponse<Object> response = new BaseRestResponse<>();
+        BaseRestResponse<Object> response = new BaseRestResponse<Object>();
         response.setStatus(BusinessReturnEnum.OK.getCode());
         response.setMessage(BusinessReturnEnum.OK.getMsg());
         return response;
@@ -36,21 +36,21 @@ public class BaseRestResponse<T> {
 
 
     public static BaseRestResponse failure() {
-        BaseRestResponse<Object> response = new BaseRestResponse<>();
+        BaseRestResponse<Object> response = new BaseRestResponse<Object>();
         response.setStatus(BusinessReturnEnum.ERROR.getCode());
         response.setMessage(BusinessReturnEnum.ERROR.getMsg());
         return response;
     }
 
     public static BaseRestResponse failure(int status, Throwable e) {
-        BaseRestResponse<Object> response = new BaseRestResponse<>();
+        BaseRestResponse<Object> response = new BaseRestResponse<Object>();
         response.setStatus(status);
         response.setMessage(e.getMessage());
         return response;
     }
 
     public static BaseRestResponse failure(BaseException e) {
-        BaseRestResponse<Object> response = new BaseRestResponse<>();
+        BaseRestResponse<Object> response = new BaseRestResponse<Object>();
         response.setStatus(e.getStatus());
         response.setMessage(e.getMessage());
         return response;

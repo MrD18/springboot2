@@ -45,7 +45,7 @@ public class AttributeController {
         System.out.println("request取msg:"+msg1);
         // 也可以用注解取
         System.out.println("注解取msg:"+msg);
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<String, Object>();
         map.put("reqMethod_msg",msg);
         map.put("annotation_msg",msg1);
         map.put("hello",hello);

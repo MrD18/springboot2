@@ -26,7 +26,7 @@ public class Consumer {
         props.put("key.deserializer", StringDeserializer.class);
         props.put("value.deserializer", StringDeserializer.class);
         //创建消息者实例
-        KafkaConsumer<String,String> consumer = new KafkaConsumer<>(props);
+        KafkaConsumer<String,String> consumer = new KafkaConsumer<String,String>(props);
         //订阅topic1的消息
       //  consumer.subscribe(Arrays.asList("prometheus_dh3"));
         consumer.subscribe(Arrays.asList("ESB_1"));
