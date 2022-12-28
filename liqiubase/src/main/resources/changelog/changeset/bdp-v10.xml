@@ -1,0 +1,140 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="selton" id="10-1">
+        <createTable tableName="biz_data_cube">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(200)"/>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="selton" id="10-2">
+        <createTable tableName="biz_data_cube_fields">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cube_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(100)"/>
+            <column name="expression" type="VARCHAR(200)"/>
+            <column defaultValue="" name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="is_enum" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tree_id" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column defaultValue="" name="parent_tree_id" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="is_group" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alias" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="unit" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="format" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="description" type="VARCHAR(200)"/>
+            <column name="sort" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="selton" id="10-3">
+        <createTable tableName="biz_data_ref_cube">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cube_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ref_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ref_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+</databaseChangeLog>

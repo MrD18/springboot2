@@ -1,0 +1,14 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    
+    <changeSet author="bin" id="14-1">
+        <addColumn tableName="sys_permission_filter">
+            <column name="datastore_ids_json" type="LONGTEXT">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+
+        <dropNotNullConstraint tableName="sys_permission_filter" columnName="name" columnDataType="VARCHAR(100)"/>
+    </changeSet>
+</databaseChangeLog>

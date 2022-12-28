@@ -1,0 +1,12 @@
+ALTER TABLE `biz_backup_log` change column `partition_id` `partition_id` DATETIME NOT NULL comment '备份分区';
+ALTER TABLE `biz_backup_plan` change column `start_partition` `start_partition` DATETIME NOT NULL comment '备份起点分区';
+ALTER TABLE `biz_task_desc` ADD `account_id` BIGINT UNSIGNED NOT NULL comment '账户ID';
+ALTER TABLE `biz_task_plan` ADD `account_id` BIGINT UNSIGNED NOT NULL comment '账户ID';
+ALTER TABLE `biz_task_recall` ADD `account_id` BIGINT UNSIGNED NOT NULL comment '账户ID';
+ALTER TABLE `biz_task_recall` ADD `modified_user_id` BIGINT UNSIGNED NOT NULL comment '修改用户ID';
+ALTER TABLE `biz_task_recall` ADD `creation_user_id` BIGINT UNSIGNED NOT NULL comment '创建用户ID';
+ALTER TABLE `biz_task_job` ADD `account_id` BIGINT UNSIGNED NOT NULL comment '账户ID';
+ALTER TABLE `biz_task_job` ADD `modified_user_id` BIGINT UNSIGNED NOT NULL comment '修改用户ID';
+ALTER TABLE `biz_task_job` ADD `creation_user_id` BIGINT UNSIGNED NOT NULL comment '创建用户ID';
+ALTER TABLE `biz_backup_plan` ADD `account_id` BIGINT UNSIGNED NOT NULL comment '账户ID';
+ALTER TABLE `biz_backup_log` ADD `account_id` BIGINT UNSIGNED NOT NULL comment '账户ID';

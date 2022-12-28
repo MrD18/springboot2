@@ -1,0 +1,25 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="27-1" author="jackl">
+        <addColumn tableName="biz_data_pipeline">
+            <column  name="refresh" type="INT" defaultValue="0">
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet author="james" id="27-2">
+        <addColumn tableName="biz_data_store">
+            <column name="status" type="TINYINT(3)" defaultValue="1" remarks="数据表当前状态">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_recovery_time" type="BIGINT"  remarks="数据表最后一次修复时间">
+                <constraints nullable="true"/>
+            </column>
+            <column name="table_status_on_clickhouse" type="LONGTEXT" remarks="数据表在clickhouse上的状态">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

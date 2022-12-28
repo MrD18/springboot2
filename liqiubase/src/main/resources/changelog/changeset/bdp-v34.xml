@@ -1,0 +1,98 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="harden" id="34-1">
+        <createTable tableName="biz_data_classification">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_name" type="VARCHAR(255)" remarks="数据分类名称">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_id" type="BIGINT UNSIGNED" remarks="父类ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mode_type" type="VARCHAR(255)" remarks="模块类型">
+                <constraints nullable="false"/>
+            </column>
+            <column name="order_by" type="INT(20)" remarks="排序">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" remarks="是否删除">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet id="34-2" author="harden">
+        <sqlFile path="sql/alter_biz_data_classification.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="34-3" author="harden">
+        <createTable tableName="biz_data_ref_classification">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="classification_id" type="BIGINT UNSIGNED" remarks="标签ID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ref_id" type="BIGINT UNSIGNED" remarks="RefID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(20)" remarks="模块类型">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" remarks="是否删除">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet id="34-4" author="harden">
+        <createIndex tableName="biz_data_ref_classification" indexName="idx_classification_id_ref_id_and_id">
+            <column name="classification_id"/>
+            <column name="ref_id"/>
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

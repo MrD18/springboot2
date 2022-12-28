@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.dhao</groupId>
+    <artifactId>springboot2</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <modules>
+        <module>boot-01-helloword</module>
+        <module>boot-02-staticresources</module>
+    </modules>
+
+
+    <!--统一管理jar包版本-->
+    <properties>
+        <spring.boot.version>2.2.2.RELEASE</spring.boot.version>
+        <mysql.version>5.1.4</mysql.version>
+        <hutool.version>5.4.1</hutool.version>
+        <lombok.version>1.16.18</lombok.version>
+        <fastjson.version>1.2.62</fastjson.version>
+    </properties>
+    <!--子模块继承后,提供作用:锁定版本+子module不用groupId和version-->
+    <dependencyManagement>
+         <dependencies>
+
+             <!--springboot 2.2.2-->
+             <dependency>
+                 <groupId>org.springframework.boot</groupId>
+                 <artifactId>spring-boot-dependencies</artifactId>
+                 <version>${spring.boot.version}</version>
+                 <type>pom</type>
+                 <scope>import</scope>
+             </dependency>
+
+             <dependency>
+                 <groupId>mysql</groupId>
+                 <artifactId>mysql-connector-java</artifactId>
+                 <version>${mysql.version}</version>
+             </dependency>
+
+             <!-- hutool工具类 -->
+             <dependency>
+                 <groupId>cn.hutool</groupId>
+                 <artifactId>hutool-all</artifactId>
+                 <version>${hutool.version}</version>
+             </dependency>
+
+             <dependency>
+                 <groupId>org.projectlombok</groupId>
+                 <artifactId>lombok</artifactId>
+                 <version>${lombok.version}</version>
+             </dependency>
+
+             <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+             <dependency>
+                 <groupId>com.alibaba</groupId>
+                 <artifactId>fastjson</artifactId>
+                 <version>${fastjson.version}</version>
+             </dependency>
+
+         </dependencies>
+    </dependencyManagement>
+
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <fork>true</fork>
+                    <addResources>true</addResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--第三方maven私服-->
+    <repositories>
+        <repository>
+            <id>nexus-aliyun</id>
+            <name>Nexus aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+
+</project>

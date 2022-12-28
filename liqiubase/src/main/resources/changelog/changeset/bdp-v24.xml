@@ -1,0 +1,286 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="back" id="24-1">
+        <createTable tableName="biz_task_desc">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="schedule_type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="task_name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="task_type" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="param_json" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="action_model" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="action_node" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="fail_retry_interval" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fail_retry_times" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fail_retry_unit" type="VARCHAR(10)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="schedule_start_time" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="schedule_end_time" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="execute_timeout" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="back" id="24-2">
+        <createTable tableName="biz_task_plan">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="task_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="next_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="task_model" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="compete_status" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="node_id" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="last_update_time" type="bigint" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+            <column name="once_status" type="TINYINT(3) UNSIGNED" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="back" id="24-3">
+        <createTable tableName="biz_task_log">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="task_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="job_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="execute_start_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="execute_end_time" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="execute_message" type="text">
+                <constraints nullable="true"/>
+            </column>
+            <column name="ip" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="back" id="24-4">
+        <createTable tableName="biz_task_recall">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="task_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="job_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="error_param_json" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remaining_times" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="back" id="24-5">
+        <createTable tableName="biz_task_job">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="task_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="task_plan_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="execute_start_time" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="execute_status" type="TINYINT(3)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="node_id" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="back" id="24-6">
+        <createTable tableName="biz_backup_plan">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="task_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_store_id" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_partition" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="back" id="24-7">
+        <createTable tableName="biz_backup_log">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="task_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="job_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_store_id" type="TINYINT(3)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="partition_id" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="backup_value" type="bigint(20)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+</databaseChangeLog>

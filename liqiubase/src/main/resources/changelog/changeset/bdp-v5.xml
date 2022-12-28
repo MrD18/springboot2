@@ -1,0 +1,249 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="bin" id="5-1">
+        <createTable tableName="dpm_alert_receiver">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="account_id" type="VARCHAR(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="user_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="user_name" type="VARCHAR(32)">
+                <constraints nullable="false" />
+            </column>
+            <column name="rule_id" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="receive_type" remarks="sms-短信,email-邮件,voice-语音"
+                    type="VARCHAR(30)">
+                <constraints nullable="false" />
+            </column>
+            <column name="dnd_times" remarks="免打扰时间段" type="VARCHAR(11)" />
+            <column name="deleted" type="BIT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createTable tableName="dpm_alert_rule">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true" />
+            </column>
+            <column defaultValue="" name="name" type="VARCHAR(100)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="account_id" type="VARCHAR(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="type" remarks="1-业务告警" type="TINYINT(3)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="meta_name" remarks="元数据名称"
+                    type="VARCHAR(100)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="meta_name_alias" remarks="元数据别名"
+                    type="VARCHAR(100)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="index_field" remarks="指标名称"
+                    type="VARCHAR(100)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="index_field_alias" remarks="指标字段别名"
+                    type="VARCHAR(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="time_field" remarks="时间字段名称"
+                    type="VARCHAR(100)">
+            </column>
+            <column name="time_field_alias" remarks="时间字段别名"
+                    type="VARCHAR(100)">
+            </column>
+            <column name="target_field" remarks="分组字段名称"
+                    type="VARCHAR(100)">
+            </column>
+            <column name="target_field_alias" remarks="分组字段别名"
+                    type="VARCHAR(100)">
+            </column>
+            <column name="conditions" remarks="条件"
+                    type="TEXT">
+            </column>
+            <column name="targets" remarks="监控目标"
+                    type="TEXT">
+            </column>
+            <column name="start_time" remarks="监控开始时段" type="VARCHAR(11)" />
+            <column name="stop_time" remarks="监控结束时段" type="VARCHAR(11)" />
+            <column name="condition_type" remarks="0-静态数值" type="TINYINT(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="time_unit" remarks="时间单位：minute(0), second(1), hour(2), day(3)"
+                    type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="time_range" remarks="时间段" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="statistical_type"
+                    remarks="AVG(0), MAX(1), MIN(2),MEDIAN中位数(3),COUNT(4), SUM(5), NONE(6)"
+                    type="TINYINT(3)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="symbol" remarks="符号" type="VARCHAR(11)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="threshold_value" remarks="阈值"
+                    type="VARCHAR(100)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="severity" remarks="事件紧急程度" type="VARCHAR(11)">
+                <constraints nullable="false" />
+            </column>
+            <column name="interval_minutes" remarks="时间段" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="recovered_alert" remarks="恢复通知" type="INT">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" remarks="0-禁用 1-启用" type="TINYINT(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="deleted" type="BIT">
+                <constraints nullable="false" />
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false" />
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createTable tableName="dpm_alert_template">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="account_id" type="VARCHAR(20)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="name" type="VARCHAR(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="content" type="MEDIUMTEXT">
+                <constraints nullable="false" />
+            </column>
+            <column name="is_recoverd" remarks="0-未恢复 1-恢复" type="TINYINT(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false" />
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+        <createTable tableName="dpm_system_dictionary">
+            <column autoIncrement="true" name="id" type="INT UNSIGNED">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="VARCHAR(20)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="value" type="VARCHAR(20)">
+                <constraints nullable="false" />
+            </column>
+            <column defaultValue="" name="type" type="VARCHAR(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="status" type="TINYINT(3)">
+                <constraints nullable="false" />
+            </column>
+            <column name="sort" type="INT" />
+        </createTable>
+        <sqlFile path="sql/dpm_db_data.sql" relativeToChangelogFile="true"/>
+
+        <dropTable tableName="sys_department"/>
+        <dropTable tableName="sys_user_department"/>
+
+        <createTable tableName="sys_department">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="VARCHAR(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="parent_id" type="BIGINT" defaultValueNumeric="0">
+                <constraints nullable="false" />
+            </column>
+            <column name="department_number" type="VARCHAR(100)" />
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false" />
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false" />
+            </column>
+            <column name="account_id" type="BIGINT">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <createTable tableName="sys_user_department">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="user_id" type="BIGINT" />
+            <column name="department_id" type="BIGINT" />
+        </createTable>
+
+        <insert dbms="mysql" tableName="sys_department">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="name" type="VARCHAR(40)" value="开发部"/>
+            <column name="account_id" type="BIGINT"  valueNumeric="1" />
+            <column name="parent_id" type="BIGINT" valueNumeric="0"/>
+            <column name="modified_time" type="DATETIME(6)" valueDate="2018-09-21 00:41:25.195000"/>
+            <column name="creation_time" type="DATETIME(6)" valueDate="2018-09-21 00:41:25.195000"/>
+        </insert>
+
+        <insert dbms="mysql" tableName="sys_user">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="2"/>
+            <column name="account_id" type="BIGINT(20)" valueNumeric="1"/>
+            <column name="name" type="VARCHAR(50)" value="user1"/>
+            <column name="password" type="VARCHAR(100)" value="0192023a7bbd73250516f069df18b500"/>
+            <column name="email" type="VARCHAR(50)"/>
+            <column name="cwop_user_id" type="VARCHAR(40)"/>
+            <column name="cwop_account_id" type="VARCHAR(40)"/>
+            <column name="mobile" type="VARCHAR(40)"/>
+            <column name="delete_flag" type="TINYINT(3)" valueNumeric="0"/>
+            <column name="status" type="INT(11)" valueNumeric="1"/>
+            <column name="modified_time" type="DATETIME(6)" valueDate="2018-09-21 00:41:25.195000"/>
+            <column name="creation_time" type="DATETIME(6)" valueDate="2018-09-21 00:41:25.195000"/>
+        </insert>
+
+        <insert dbms="mysql" tableName="sys_user">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="3"/>
+            <column name="account_id" type="BIGINT(20)" valueNumeric="1"/>
+            <column name="name" type="VARCHAR(50)" value="user2"/>
+            <column name="password" type="VARCHAR(100)" value="0192023a7bbd73250516f069df18b500"/>
+            <column name="email" type="VARCHAR(50)"/>
+            <column name="cwop_user_id" type="VARCHAR(40)"/>
+            <column name="cwop_account_id" type="VARCHAR(40)"/>
+            <column name="mobile" type="VARCHAR(40)"/>
+            <column name="delete_flag" type="TINYINT(3)" valueNumeric="0"/>
+            <column name="status" type="INT(11)" valueNumeric="1"/>
+            <column name="modified_time" type="DATETIME(6)" valueDate="2018-09-21 00:41:25.195000"/>
+            <column name="creation_time" type="DATETIME(6)" valueDate="2018-09-21 00:41:25.195000"/>
+        </insert>
+
+        <insert dbms="mysql" tableName="sys_user_department">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="user_id" type="BIGINT" valueNumeric="2"/>
+            <column name="department_id" type="BIGINT"  valueNumeric="1" />
+        </insert>
+
+        <insert dbms="mysql" tableName="sys_user_department">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="2"/>
+            <column name="user_id" type="BIGINT" valueNumeric="3"/>
+            <column name="department_id" type="BIGINT"  valueNumeric="1" />
+        </insert>
+    </changeSet>
+</databaseChangeLog>

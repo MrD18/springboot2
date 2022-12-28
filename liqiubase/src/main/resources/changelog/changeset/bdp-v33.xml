@@ -1,0 +1,22 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="33-1" author="lareina">
+        <sqlFile path="sql/alter_biz_data_query_model_help.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="33-2" author="lareina">
+        <sqlFile path="sql/alter_biz_data_query_model_help_menu.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="33-3" author="lareina">
+        <sqlFile path="sql/alter_biz_data_query_model_help_content.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="33-4" author="lareina">
+        <sqlFile path="sql/alter_biz_data_query_model_help_content2.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="33-5" author="lareina">
+        <sqlFile path="sql/alter_biz_data_pipeline_processor_instructions3.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="33-6" author="lareina">
+        <sqlFile path="sql/alter_biz_data_pipeline_processor_instructions4.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+</databaseChangeLog>

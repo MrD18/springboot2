@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: liqui
+  datasource:
+    url: jdbc:mysql://localhost:3306/harden_0809
+    username: root
+    password: 12345678
+    driver-class-name: com.mysql.jdbc.Driver
+  liquibase:
+    change-log: classpath:liquibase/master.xml
+    enabled: true
+
+
+server:
+  port: 10086

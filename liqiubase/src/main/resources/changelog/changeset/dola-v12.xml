@@ -1,0 +1,104 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!-- sys_permission -->
+    <changeSet author="bin" id="12-1">
+        <createTable tableName="sys_permission">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(200)">
+            </column>
+            <column name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <!-- sys_permission_filter -->
+    <changeSet id="bin" author="12-2">
+        <createTable tableName="sys_permission_filter">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="permission_id" type="BIGINT UNSIGNED">
+                <constraints deleteCascade="true" references="sys_permission(id)" foreignKeyName="sysGroupFilter_Permissionid_fk"/>
+            </column>
+            <column name="name" type="VARCHAR(100)" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="operator" type="VARCHAR(20)" />
+            <column name="values_json" type="LONGTEXT" />
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- sys_group_permission -->
+    <changeSet id="bin" author="12-3">
+        <createTable tableName="sys_group_permission">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="group_id" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="permission_id" type="BIGINT UNSIGNED" >
+                <constraints nullable="false" deleteCascade="true" references="sys_permission(id)" foreignKeyName="sysGroupPermission_Permissionid_fk"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="12-4" author="selton">
+        <createIndex indexName="sys_permission_index" tableName="sys_permission" unique="true">
+            <column name="name" type="VARCHAR(50)"/>
+            <column name="account_id" type="BIGINT UNSIGNED"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

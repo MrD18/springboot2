@@ -1,0 +1,1 @@
+ALTER TABLE `biz_task_log` change column `execute_message` `execute_message` LONGTEXT comment '执行信息';

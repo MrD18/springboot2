@@ -1,0 +1,808 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="bin" id="1-1">
+        <createTable tableName="biz_data_process_model">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="conf_json" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-2">
+        <createTable tableName="biz_data_process_task">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="conf_json" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-3">
+        <createTable tableName="biz_data_process_task_dispatch">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-4">
+        <createTable tableName="biz_data_process_worker">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-5">
+        <createTable tableName="biz_data_query_model">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="path_id" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="conf_json" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-6">
+        <createTable tableName="biz_data_ref_tag">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tag_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ref_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-7">
+        <createTable tableName="biz_data_set">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="conf_json" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-8">
+        <createTable tableName="biz_data_source">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="code_name" type="VARCHAR(100)"/>
+            <column name="description" type="VARCHAR(200)"/>
+            <column defaultValue="" name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="kafka_conf_json" type="TEXT">
+                <constraints nullable="true"/>
+            </column>
+            <column name="schema_conf_json" type="LONGTEXT">
+                <constraints nullable="true"/>
+            </column>
+            <column name="store_conf_json" type="TEXT">
+                <constraints nullable="true"/>
+            </column>
+            <column name="stream_path_uuid" type="VARCHAR(50)"/>
+            <column name="status" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-9">
+        <createTable tableName="biz_data_tag">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-10">
+        <createTable tableName="biz_samplereel">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="name" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="type" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cover" type="VARCHAR(200)"/>
+            <column name="conf_json" type="LONGTEXT"/>
+            <column defaultValueNumeric="0" name="is_share" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="source" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quote_url" type="VARCHAR(200)"/>
+            <column defaultValueNumeric="0" name="is_quote_cover" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="status" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-11">
+        <createTable tableName="biz_samplereel_share">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-12">
+        <createTable tableName="biz_samplereel_template">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="INT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="conf_json" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="bin" id="1-13">
+        <createTable tableName="sys_account">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="company_name" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="company_webset" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="company_phone" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="link_man" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="creation_time" type="DATETIME(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="DATETIME(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-14">
+        <createTable tableName="sys_account_app">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-15">
+        <createTable tableName="sys_audit_log">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="app_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="content" type="VARCHAR(500)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-16">
+        <createTable tableName="sys_department">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-17">
+        <createTable tableName="sys_premisson">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-18">
+        <createTable tableName="sys_role">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-19">
+        <createTable tableName="sys_role_premisson">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="roleid" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="premisson_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-20">
+        <createTable tableName="sys_user">
+            <column autoIncrement="true"  name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(100)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="email" type="VARCHAR(50)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="cwop_user_id" type="VARCHAR(40)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="cwop_account_id" type="VARCHAR(40)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="mobile" type="VARCHAR(40)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="delete_flag" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INT(11)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="DATETIME(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="DATETIME(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-21">
+        <createTable tableName="sys_user_department">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="parent_id" type="BIGINT UNSIGNED"/>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-22">
+        <createTable tableName="sys_user_role">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+    <changeSet author="bin" id="1-23">
+        <createIndex indexName="idx_account_app" tableName="biz_data_process_model">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_data_process_task">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_data_process_task_dispatch">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_data_process_worker">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_data_query_model">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_data_ref_tag">
+            <column name="tag_id"/>
+            <column name="ref_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_data_set">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_data_source">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_data_tag">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_samplereel">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_samplereel_share">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="biz_samplereel_template">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+        <createIndex indexName="idx_account_app" tableName="sys_audit_log">
+            <column name="account_id"/>
+            <column name="app_id"/>
+            <column name="id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="bin" id="1-24">
+        <insert dbms="mysql" tableName="sys_user">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="account_id" type="BIGINT(20)" valueNumeric="1"/>
+            <column name="name" type="VARCHAR(50)" value="admin"/>
+            <column name="password" type="VARCHAR(100)" value="0192023a7bbd73250516f069df18b500"/>
+            <column name="email" type="VARCHAR(50)"/>
+            <column name="cwop_user_id" type="VARCHAR(40)"/>
+            <column name="cwop_account_id" type="VARCHAR(40)"/>
+            <column name="mobile" type="VARCHAR(40)"/>
+            <column name="delete_flag" type="TINYINT(3)" valueNumeric="0"/>
+            <column name="status" type="INT(11)" valueNumeric="1"/>
+            <column name="modified_time" type="DATETIME(6)" valueDate="2018-09-21 00:41:25.195000"/>
+            <column name="creation_time" type="DATETIME(6)" valueDate="2018-09-21 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+    <changeSet author="bin" id="1-25">
+        <insert dbms="mysql" tableName="sys_account">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="account_id" type="VARCHAR(40)" value="1"/>
+            <column name="company_name" type="VARCHAR(100)"/>
+            <column name="company_webset" type="VARCHAR(100)"/>
+            <column name="company_phone" type="VARCHAR(50)"/>
+            <column name="link_man" type="VARCHAR(100)"/>
+            <column name="modified_time" type="DATETIME(6)" valueDate="2018-09-21 00:41:25.195000"/>
+            <column name="creation_time" type="DATETIME(6)" valueDate="2018-09-21 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

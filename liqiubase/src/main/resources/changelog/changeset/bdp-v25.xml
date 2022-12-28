@@ -1,0 +1,97 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="back" id="25-1">
+        <createTable tableName="biz_restore_log">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="task_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="job_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_store_id" type="TINYINT(3)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="partition_id" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="back" id="25-2">
+        <createTable tableName="biz_restore_plan">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="task_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="account_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_store_id" type="TINYINT(3)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="restore_type" type="TINYINT(3)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_partition" type="datetime">
+                <constraints nullable="true"/>
+            </column>
+            <column name="end_partition" type="datetime">
+            <constraints nullable="false"/>
+            </column>
+            <column name="start_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet id="25-3" author="back">
+        <sqlFile path="sql/alter_biz_backup_log.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="25-4" author="back">
+        <sqlFile path="sql/alter_biz_task_log.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="25-5" author="back">
+        <sqlFile path="sql/alter_biz_task.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+</databaseChangeLog>

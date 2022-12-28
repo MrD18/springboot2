@@ -1,0 +1,180 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="19-1" author="lareina">
+        <createTable tableName="biz_data_grok_template">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="" name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="pattern" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="eunice" id="19-2">
+        <insert dbms="mysql" tableName="biz_data_grok_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="type" type="VARCHAR(50)" value="apache"/>
+            <column name="name" type="VARCHAR(50)" value="apache_error_log"/>
+            <column name="pattern" type="LONGTEXT" value="\[%{GPFSDATE:timestamp}\] \[%{LOGLEVEL:level}\] \[client %{IPORHOST:client_ip}\] %{GREEDYDATA:message_data}"/>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" valueNumeric="0"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="19-3">
+        <insert dbms="mysql" tableName="biz_data_grok_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="2"/>
+            <column name="type" type="VARCHAR(50)" value="firewalls"/>
+            <column name="name" type="VARCHAR(50)" value="firewalls_cisco_log"/>
+            <column name="pattern" type="LONGTEXT" value="%{CISCO_ACTION:action} %{CISCO_XLATE_TYPE:xlate_type} %{WORD:protocol} translation from %{DATA:src_interface}:%{IP:src_ip}/%{INT:src_port} to %{DATA:src_xlated_interface}:%{IP:src_xlated_ip}/%{INT:src_xlated_port} duration 0:00:00"/>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" valueNumeric="0"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="19-4">
+        <insert dbms="mysql" tableName="biz_data_grok_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="3"/>
+            <column name="type" type="VARCHAR(50)" value="apache"/>
+            <column name="name" type="VARCHAR(50)" value="apache_access_log"/>
+            <column name="pattern" type="LONGTEXT" value="%{IPORHOST:client_ip} - - \[%{HTTPDATE:timestamp:date}\] &quot;%{WORD:request_method} %{URIPATH:uri} HTTP/%{NUMBER:http_version:float}&quot; %{NUMBER:status:int} %{NUMBER:bytes:int}"/>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" valueNumeric="0"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="19-5">
+        <insert dbms="mysql" tableName="biz_data_grok_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="4"/>
+            <column name="type" type="VARCHAR(50)" value="nginx"/>
+            <column name="name" type="VARCHAR(50)" value="nginx_error_log"/>
+            <column name="pattern" type="LONGTEXT" value="%{YEAR:year}/%{MONTHNUM:month}/%{MONTHDAY:day} %{TIME:time} \[%{LOGLEVEL:level}\] %{POSINT:pid}#%{NUMBER:num}: %{GREEDYDATA:error_message}"/>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" valueNumeric="0"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="19-6">
+        <insert dbms="mysql" tableName="biz_data_grok_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="5"/>
+            <column name="type" type="VARCHAR(50)" value="nginx"/>
+            <column name="name" type="VARCHAR(50)" value="nginx_access_log"/>
+            <column name="pattern" type="LONGTEXT" value="%{IPORHOST:client_ip} - - \[%{HTTPDATE:timestamp:date}\] &quot;%{WORD:request_method} %{URIPATH:uri} HTTP/%{NUMBER:http_version:float}&quot; %{NUMBER:status:int} %{NUMBER:bytes:int} &quot;%{URI:http_referer}&quot; &quot;%{GREEDYDATA:http_user_agent}&quot; &quot;-&quot;"/>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" valueNumeric="0"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="19-7">
+        <insert dbms="mysql" tableName="biz_data_grok_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="6"/>
+            <column name="type" type="VARCHAR(50)" value="mysql"/>
+            <column name="name" type="VARCHAR(50)" value="mysql_error_log"/>
+            <column name="pattern" type="LONGTEXT" value="%{TIMESTAMP_ISO8601:timestamp} %{POSINT:pid} \[%{LOGLEVEL:level}\] %{GREEDYDATA:error_message}"/>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" valueNumeric="0"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="19-8">
+        <insert dbms="mysql" tableName="biz_data_grok_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="7"/>
+            <column name="type" type="VARCHAR(50)" value="mysql"/>
+            <column name="name" type="VARCHAR(50)" value="mysql_slow_log"/>
+            <column name="pattern" type="LONGTEXT" value="# Time: %{TIMESTAMP_ISO8601:timestamp}\n# User@Host: %{USER:user}%{DATA} @ %{IPORHOST:host} %{GREEDYDATA}\n# Query_time: %{NUMBER:querytime:float} Lock_time: %{NUMBER:lock_time:float} Rows_sent: %{INT:rows_sent} Rows_examined: %{INT:rows_examined}\nSET timestamp=%{GREEDYDATA};\nuse %{NOTSPACE:database};\n%{GREEDYDATA:statement};"/>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" valueNumeric="0"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="19-9">
+        <insert dbms="mysql" tableName="biz_data_grok_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="8"/>
+            <column name="type" type="VARCHAR(50)" value="redis"/>
+            <column name="name" type="VARCHAR(50)" value="redis_notice_log"/>
+            <column name="pattern" type="LONGTEXT" value="%{POSINT:pid}:%{DATA:role} %{REDISTIMESTAMP:timestamp} * %{GREEDYDATA:message}"/>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" valueNumeric="0"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="19-10">
+        <insert dbms="mysql" tableName="biz_data_grok_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="9"/>
+            <column name="type" type="VARCHAR(50)" value="redis"/>
+            <column name="name" type="VARCHAR(50)" value="redis_warning_log"/>
+            <column name="pattern" type="LONGTEXT" value="%{POSINT:pid}:%{DATA:role} %{REDISTIMESTAMP:timestamp} # %{GREEDYDATA:message}"/>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" valueNumeric="0"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="19-11">
+        <insert dbms="mysql" tableName="biz_data_grok_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="10"/>
+            <column name="type" type="VARCHAR(50)" value="audit"/>
+            <column name="name" type="VARCHAR(50)" value="redhat_audit_log"/>
+            <column name="pattern" type="LONGTEXT" value="type=%{GREEDYDATA:type} msg=%{DATA}(%{DATESTAMP:msg_timestamp}:%{NUMBER:msg_id:long})%{DATA} pid=%{NUMBER:pid:long} uid=%{NUMBER:uid:long} auid=%{NUMBER:auid:long} ses=%{NUMBER:ses:long} msg='op=%{GREEDYDATA:op} grantors=%{GREEDYDATA:grantors} acct=\&quot;%{WORD:acct}\&quot; exe=\&quot;%{URIPATH:exe}\&quot; hostname=%{DATA:hostname} addr=%{DATA:addr} terminal=%{DATA:terminal} res=%{DATA:res}'"/>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED" valueNumeric="0"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

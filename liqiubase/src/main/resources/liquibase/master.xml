@@ -1,0 +1,39 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+<!--
+    <include file="changeset/bdp-v1.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v2.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v3.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v4.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v5.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v6.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v7.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v8.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v9.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v10.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v11.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/dola-v12.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v13.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/dola-v14.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v15.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v16.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v17.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v18.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v19.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v21.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v22.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v23.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v24.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v25.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v26.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v27.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v28.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v29.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v30.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v31.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v32.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v33.xml" relativeToChangelogFile="true"/>
+    <include file="changeset/bdp-v34.xml" relativeToChangelogFile="true"/>-->
+    <includeAll path="liquibase/changelogs/" relativeToChangelogFile="false"/>
+</databaseChangeLog>

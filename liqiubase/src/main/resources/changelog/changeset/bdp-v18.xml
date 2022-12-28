@@ -1,0 +1,1057 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet id="18-1" author="lareina">
+        <createTable tableName="biz_data_grok_variate">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column defaultValue="" name="name" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(200)"/>
+            <column name="group" type="VARCHAR(50)"/>
+            <column name="content" type="VARCHAR(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sample" type="VARCHAR(200)"/>
+            <column name="modified_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-2">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="name" type="VARCHAR(50)" value="USERNAME"/>
+            <column name="description" type="VARCHAR(200)" value="匹配用户名或用户"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{USERNAME:user}"/>
+            <column name="sample" type="VARCHAR(200)" value="eunice"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-3">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="2"/>
+            <column name="name" type="VARCHAR(50)" value="NUMBER"/>
+            <column name="description" type="VARCHAR(200)" value="匹配数字类型，包括整数和浮点数"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{NUMBER:resptime:float}"/>
+            <column name="sample" type="VARCHAR(200)" value="0.002"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-4">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="3"/>
+            <column name="name" type="VARCHAR(50)" value="IPORHOST"/>
+            <column name="description" type="VARCHAR(200)" value="匹配ip或者主机名称"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{IPORHOST:client_ip}"/>
+            <column name="sample" type="VARCHAR(200)" value="10.0.2.50"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-5">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="4"/>
+            <column name="name" type="VARCHAR(50)" value="GREEDYDATA"/>
+            <column name="description" type="VARCHAR(200)" value="匹配所有剩余的数据"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{GREEDYDATA:message_data}"/>
+            <column name="sample" type="VARCHAR(200)" value="other data"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+
+    <changeSet author="eunice" id="18-6">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="5"/>
+            <column name="name" type="VARCHAR(50)" value="JAVACLASS"/>
+            <column name="description" type="VARCHAR(200)" value="匹配javaClass"/>
+            <column name="group" type="VARCHAR(50)" value="java"/>
+            <column name="content" type="VARCHAR(200)" value="%{JAVACLASS:javaclass}"/>
+            <column name="sample" type="VARCHAR(200)" value="com.cloudwise.bdp"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-7">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="6"/>
+            <column name="name" type="VARCHAR(50)" value="NOTSPACE"/>
+            <column name="description" type="VARCHAR(200)" value="匹配所有非空格的内容"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{NOTSPACE:field}"/>
+            <column name="sample" type="VARCHAR(200)" value="cloudwise"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-8">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="7"/>
+            <column name="name" type="VARCHAR(50)" value="QUOTEDSTRING"/>
+            <column name="description" type="VARCHAR(200)" value="匹配所有被双引号括起来的字符串内容"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{QUOTEDSTRING:field}"/>
+            <column name="sample" type="VARCHAR(200)" value="&quot;abc&quot;"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-9">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="8"/>
+            <column name="name" type="VARCHAR(50)" value="DATA"/>
+            <column name="description" type="VARCHAR(200)" value="匹配所有字符"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{DATA:field}"/>
+            <column name="sample" type="VARCHAR(200)" value="abc"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-10">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="9"/>
+            <column name="name" type="VARCHAR(50)" value="HTTPDATE"/>
+            <column name="description" type="VARCHAR(200)" value="http默认日期格式"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{HTTPDATE:ts}"/>
+            <column name="sample" type="VARCHAR(200)" value="[30/Sep/2017:10:50:53 +0800]"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-11">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="10"/>
+            <column name="name" type="VARCHAR(50)" value="MAC"/>
+            <column name="description" type="VARCHAR(200)" value="MAC地址，可以是思科设备里得mac地址，也可以是windows里得mac地址"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{MAC:mm}"/>
+            <column name="sample" type="VARCHAR(200)" value="00:15:5D:6E:28:13"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-12">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="11"/>
+            <column name="name" type="VARCHAR(50)" value="IP"/>
+            <column name="description" type="VARCHAR(200)" value="IP地址，可以是IPv4或IPv6地址"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{IP:client}"/>
+            <column name="sample" type="VARCHAR(200)" value="55.3.244.1"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-13">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="12"/>
+            <column name="name" type="VARCHAR(50)" value="HOSTNAME"/>
+            <column name="description" type="VARCHAR(200)" value="主机名称 "/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{HOSTNAME:hostname}"/>
+            <column name="sample" type="VARCHAR(200)" value="ck1"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-14">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="13"/>
+            <column name="name" type="VARCHAR(50)" value="HOSTPORT"/>
+            <column name="description" type="VARCHAR(200)" value="主机名(IP)+端口"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{HOSTPORT:hostport}"/>
+            <column name="sample" type="VARCHAR(200)" value="192.168.180.21:3306"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-15">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="14"/>
+            <column name="name" type="VARCHAR(50)" value="URIPATH"/>
+            <column name="description" type="VARCHAR(200)" value="URL地址"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{URIPATH:path}"/>
+            <column name="sample" type="VARCHAR(200)" value="/twiki/bin/view/Main/DCCAndPostFix"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-16">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="15"/>
+            <column name="name" type="VARCHAR(50)" value="URIPARAM"/>
+            <column name="description" type="VARCHAR(200)" value="URL参数"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{URIPARAM:args}"/>
+            <column name="sample" type="VARCHAR(200)" value="?proptype=11&amp;level=2&amp;begindate=2020-01-08"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-17">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="16"/>
+            <column name="name" type="VARCHAR(50)" value="TIME"/>
+            <column name="description" type="VARCHAR(200)" value="时间"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{TIME:time}"/>
+            <column name="sample" type="VARCHAR(200)" value="01:00:45"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-18">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="17"/>
+            <column name="name" type="VARCHAR(50)" value="DATE_US"/>
+            <column name="description" type="VARCHAR(200)" value="美国日期格式"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{DATE_US:date}"/>
+            <column name="sample" type="VARCHAR(200)" value="10/12/1986"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-19">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="18"/>
+            <column name="name" type="VARCHAR(50)" value="DATE_EU"/>
+            <column name="description" type="VARCHAR(200)" value="欧洲日期格式"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{DATE_EU:date}"/>
+            <column name="sample" type="VARCHAR(200)" value="15-10-1986"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-20">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="19"/>
+            <column name="name" type="VARCHAR(50)" value="ISO8601_TIMEZONE"/>
+            <column name="description" type="VARCHAR(200)" value="ISO8601时间格式 "/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{ISO8601_TIMEZONE:time}"/>
+            <column name="sample" type="VARCHAR(200)" value="+15:19"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-21">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="20"/>
+            <column name="name" type="VARCHAR(50)" value="TIMESTAMP_ISO8601"/>
+            <column name="description" type="VARCHAR(200)" value="ISO8601时间戳格式"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{TIMESTAMP_ISO8601:timestamp}"/>
+            <column name="sample" type="VARCHAR(200)" value="2020-01-03T00:34:06+08:00"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-22">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="21"/>
+            <column name="name" type="VARCHAR(50)" value="DATE"/>
+            <column name="description" type="VARCHAR(200)" value="日期，美国日期或者欧洲日期"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{DATE:date}"/>
+            <column name="sample" type="VARCHAR(200)" value="15-10-1986"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-23">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="22"/>
+            <column name="name" type="VARCHAR(50)" value="DATESTAMP"/>
+            <column name="description" type="VARCHAR(200)" value="完整日期+时间"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{DATESTAMP:timestamp}"/>
+            <column name="sample" type="VARCHAR(200)" value="07-03-2016 00:34:06"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-24">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="23"/>
+            <column name="name" type="VARCHAR(50)" value="DATESTAMP_RFC822"/>
+            <column name="description" type="VARCHAR(200)" value="RFC822格式时间戳"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{DATESTAMP_RFC822:timestamp}"/>
+            <column name="sample" type="VARCHAR(200)" value="Fri Mar 30 2018 14:53:15 UTC"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-25">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="24"/>
+            <column name="name" type="VARCHAR(50)" value="DATESTAMP_RFC2822"/>
+            <column name="description" type="VARCHAR(200)" value="RFC2822格式时间戳"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{DATESTAMP_RFC2822:timestamp}"/>
+            <column name="sample" type="VARCHAR(200)" value="Fri, 30 Mar 2018 14:53:15 +15:19"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-26">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="25"/>
+            <column name="name" type="VARCHAR(50)" value="DATESTAMP_OTHER"/>
+            <column name="description" type="VARCHAR(200)" value="其他格式时间戳"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{DATESTAMP_OTHER:timestamp}"/>
+            <column name="sample" type="VARCHAR(200)" value="Fri Mar 30 14:53:15 UTC 2018"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-27">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="26"/>
+            <column name="name" type="VARCHAR(50)" value="DATESTAMP_EVENTLOG"/>
+            <column name="description" type="VARCHAR(200)" value="EVENTLOG时间"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{DATESTAMP_EVENTLOG:timestamp}"/>
+            <column name="sample" type="VARCHAR(200)" value="20180330145315"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-28">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="27"/>
+            <column name="name" type="VARCHAR(50)" value="SYSLOGTIMESTAMP"/>
+            <column name="description" type="VARCHAR(200)" value="syslog格式时间戳"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{SYSLOGTIMESTAMP:timestamp}"/>
+            <column name="sample" type="VARCHAR(200)" value="Mar 30 14:53:15"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-29">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="28"/>
+            <column name="name" type="VARCHAR(50)" value="PROG"/>
+            <column name="description" type="VARCHAR(200)" value="匹配program内容"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{PROG:program}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-30">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="29"/>
+            <column name="name" type="VARCHAR(50)" value="SYSLOGPROG"/>
+            <column name="description" type="VARCHAR(200)" value="匹配program和pid内容"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{SYSLOGPROG:program}"/>
+            <column name="sample" type="VARCHAR(200)" value=" "/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-31">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="30"/>
+            <column name="name" type="VARCHAR(50)" value="SYSLOGFACILITY"/>
+            <column name="description" type="VARCHAR(200)" value="匹配facility"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{SYSLOGFACILITY:facility}"/>
+            <column name="sample" type="VARCHAR(200)" value="&lt;10.8098&gt;"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-32">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="31"/>
+            <column name="name" type="VARCHAR(50)" value="INT"/>
+            <column name="description" type="VARCHAR(200)" value="整型数字"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{INT:int}"/>
+            <column name="sample" type="VARCHAR(200)" value="10"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-33">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="32"/>
+            <column name="name" type="VARCHAR(50)" value="BASE16NUM"/>
+            <column name="description" type="VARCHAR(200)" value="匹配十六进制数"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{BASE16NUM:num}"/>
+            <column name="sample" type="VARCHAR(200)" value="F"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-34">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="33"/>
+            <column name="name" type="VARCHAR(50)" value="BASE16FLOAT"/>
+            <column name="description" type="VARCHAR(200)" value="匹配十六进制浮点数"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{BASE16FLOAT:float}"/>
+            <column name="sample" type="VARCHAR(200)" value="F.1"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-35">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="34"/>
+            <column name="name" type="VARCHAR(50)" value="WORD"/>
+            <column name="description" type="VARCHAR(200)" value="匹配字母或一句话"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{WORD:word}"/>
+            <column name="sample" type="VARCHAR(200)" value="TCP"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-36">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="35"/>
+            <column name="name" type="VARCHAR(50)" value="UUID"/>
+            <column name="description" type="VARCHAR(200)" value="匹配UUID"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{UUID:id}"/>
+            <column name="sample" type="VARCHAR(200)" value="fe52bc1a-a881-4e99-8543-f4f1e5ec664c"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-37">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="36"/>
+            <column name="name" type="VARCHAR(50)" value="PATH"/>
+            <column name="description" type="VARCHAR(200)" value="匹配UNIXPATH或者WINPATH"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{PATH:path}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-38">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="37"/>
+            <column name="name" type="VARCHAR(50)" value="TTY"/>
+            <column name="description" type="VARCHAR(200)" value="匹配TTY路径"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{TTY:path}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-39">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="38"/>
+            <column name="name" type="VARCHAR(50)" value="URIPROTO"/>
+            <column name="description" type="VARCHAR(200)" value="匹配URI中的头部分"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{URIPROTO:proto}"/>
+            <column name="sample" type="VARCHAR(200)" value="http"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-40">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="39"/>
+            <column name="name" type="VARCHAR(50)" value="URIHOST"/>
+            <column name="description" type="VARCHAR(200)" value="匹配IPORHOST和POSINT"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{URIHOST:urihost}"/>
+            <column name="sample" type="VARCHAR(200)" value="hostname.domain.tld"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-41">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="40"/>
+            <column name="name" type="VARCHAR(50)" value="MONTH"/>
+            <column name="description" type="VARCHAR(200)" value="匹配月份英文缩写或者全拼等格式月份"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{MONTH:month}"/>
+            <column name="sample" type="VARCHAR(200)" value="Jan"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-42">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="41"/>
+            <column name="name" type="VARCHAR(50)" value="MONTHNUM"/>
+            <column name="description" type="VARCHAR(200)" value="匹配数字格式月份"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{MONTHNUM:month}"/>
+            <column name="sample" type="VARCHAR(200)" value="9"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-43">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="42"/>
+            <column name="name" type="VARCHAR(50)" value="MONTHDAY"/>
+            <column name="description" type="VARCHAR(200)" value="匹配月份中的day"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{MONTHDAY:day}"/>
+            <column name="sample" type="VARCHAR(200)" value="21"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-44">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="43"/>
+            <column name="name" type="VARCHAR(50)" value="DAY"/>
+            <column name="description" type="VARCHAR(200)" value="匹配星期的英文全拼或者缩写"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{DAY:day}"/>
+            <column name="sample" type="VARCHAR(200)" value="Fri"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-45">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="44"/>
+            <column name="name" type="VARCHAR(50)" value="YEAR"/>
+            <column name="description" type="VARCHAR(200)" value="匹配年份"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{YEAR:year}"/>
+            <column name="sample" type="VARCHAR(200)" value="2020"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-46">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="45"/>
+            <column name="name" type="VARCHAR(50)" value="HOUR"/>
+            <column name="description" type="VARCHAR(200)" value="匹配小时"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{HOUR:hour}"/>
+            <column name="sample" type="VARCHAR(200)" value="14"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-47">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="46"/>
+            <column name="name" type="VARCHAR(50)" value="MINUTE"/>
+            <column name="description" type="VARCHAR(200)" value="匹配分钟"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{MINUTE:minute}"/>
+            <column name="sample" type="VARCHAR(200)" value="30"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-48">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="47"/>
+            <column name="name" type="VARCHAR(50)" value="SECOND"/>
+            <column name="description" type="VARCHAR(200)" value="匹配秒"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{SECOND:second}"/>
+            <column name="sample" type="VARCHAR(200)" value="59"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-49">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="48"/>
+            <column name="name" type="VARCHAR(50)" value="TZ"/>
+            <column name="description" type="VARCHAR(200)" value="匹配UTC"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{TZ:tz}"/>
+            <column name="sample" type="VARCHAR(200)" value="UTC"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-50">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="49"/>
+            <column name="name" type="VARCHAR(50)" value="LOGLEVEL"/>
+            <column name="description" type="VARCHAR(200)" value="匹配Log的Level"/>
+            <column name="group" type="VARCHAR(50)" value="grok-patterns"/>
+            <column name="content" type="VARCHAR(200)" value="%{LOGLEVEL:level}"/>
+            <column name="sample" type="VARCHAR(200)" value="warn"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-51">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="50"/>
+            <column name="name" type="VARCHAR(50)" value="CISCOTIMESTAMP"/>
+            <column name="description" type="VARCHAR(200)" value="匹配cisco时间格式"/>
+            <column name="group" type="VARCHAR(50)" value="firewalls"/>
+            <column name="content" type="VARCHAR(200)" value="%{CISCOTIMESTAMP:timestamp}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-52">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="51"/>
+            <column name="name" type="VARCHAR(50)" value="CISCOTAG"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="firewalls"/>
+            <column name="content" type="VARCHAR(200)" value="%{CISCOTAG:ciscotag}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-53">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="52"/>
+            <column name="name" type="VARCHAR(50)" value="CISCO_ACTION"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="firewalls"/>
+            <column name="content" type="VARCHAR(200)" value="%{CISCO_ACTION:action}"/>
+            <column name="sample" type="VARCHAR(200)" value="Built"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-54">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="53"/>
+            <column name="name" type="VARCHAR(50)" value="CISCO_REASON"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="firewalls"/>
+            <column name="content" type="VARCHAR(200)" value="%{CISCO_REASON:reason}"/>
+            <column name="sample" type="VARCHAR(200)" value="Duplicate TCP SYN"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-55">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="54"/>
+            <column name="name" type="VARCHAR(50)" value="CISCO_DIRECTION"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="firewalls"/>
+            <column name="content" type="VARCHAR(200)" value="%{CISCO_DIRECTION:direction}"/>
+            <column name="sample" type="VARCHAR(200)" value="Inbound"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-56">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="55"/>
+            <column name="name" type="VARCHAR(50)" value="CISCO_INTERVAL"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="firewalls"/>
+            <column name="content" type="VARCHAR(200)" value="%{CISCO_INTERVAL:interval}"/>
+            <column name="sample" type="VARCHAR(200)" value="first hit"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-57">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="56"/>
+            <column name="name" type="VARCHAR(50)" value="CISCO_XLATE_TYPE"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="firewalls"/>
+            <column name="content" type="VARCHAR(200)" value="%{CISCO_XLATE_TYPE:type}"/>
+            <column name="sample" type="VARCHAR(200)" value="dynamic"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-58">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="57"/>
+            <column name="name" type="VARCHAR(50)" value="GPFSDATE"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="gpfs"/>
+            <column name="content" type="VARCHAR(200)" value="%{GPFSDATE:date}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-59">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="58"/>
+            <column name="name" type="VARCHAR(50)" value="HAPROXYTIME"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="haproxy"/>
+            <column name="content" type="VARCHAR(200)" value="%{HAPROXYTIME:time}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-60">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="59"/>
+            <column name="name" type="VARCHAR(50)" value="HAPROXYDATE"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="haproxy"/>
+            <column name="content" type="VARCHAR(200)" value="%{HAPROXYDATE:date}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-61">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="60"/>
+            <column name="name" type="VARCHAR(50)" value="JAVAFILE"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="java"/>
+            <column name="content" type="VARCHAR(200)" value="%{JAVAFILE:file}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-62">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="61"/>
+            <column name="name" type="VARCHAR(50)" value="CRON_ACTION"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="linux-syslog"/>
+            <column name="content" type="VARCHAR(200)" value="%{CRON_ACTION:action}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-63">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="62"/>
+            <column name="name" type="VARCHAR(50)" value="SYSLOG5424PRI"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="linux-syslog"/>
+            <column name="content" type="VARCHAR(200)" value="%{SYSLOG5424PRI:syslog5424_pri}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-64">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="63"/>
+            <column name="name" type="VARCHAR(50)" value="SYSLOG5424SD"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="linux-syslog"/>
+            <column name="content" type="VARCHAR(200)" value="%{SYSLOG5424SD:syslog5424_sd}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-65">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="64"/>
+            <column name="name" type="VARCHAR(50)" value="MONGO_QUERY"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="mongodb"/>
+            <column name="content" type="VARCHAR(200)" value="%{MONGO_QUERY:query}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-66">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="65"/>
+            <column name="name" type="VARCHAR(50)" value="MONGO_WORDDASH"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="mongodb"/>
+            <column name="content" type="VARCHAR(200)" value="%{MONGO_WORDDASH:wordDash}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-67">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="66"/>
+            <column name="name" type="VARCHAR(50)" value="NAGIOSTIME"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="nagios"/>
+            <column name="content" type="VARCHAR(200)" value="%{NAGIOSTIME:nagios_epoch}"/>
+            <column name="sample" type="VARCHAR(200)" value=""/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-68">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="67"/>
+            <column name="name" type="VARCHAR(50)" value="REDISTIMESTAMP"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="redis"/>
+            <column name="content" type="VARCHAR(200)" value="%{REDISTIMESTAMP:timestamp}"/>
+            <column name="sample" type="VARCHAR(200)" value="30 Mar 14:53:15"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="eunice" id="18-69">
+        <insert dbms="mysql" tableName="biz_data_grok_variate">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="68"/>
+            <column name="name" type="VARCHAR(50)" value="RUBY_LOGLEVEL"/>
+            <column name="description" type="VARCHAR(200)" value=""/>
+            <column name="group" type="VARCHAR(50)" value="ruby"/>
+            <column name="content" type="VARCHAR(200)" value="%{RUBY_LOGLEVEL:level}"/>
+            <column name="sample" type="VARCHAR(200)" value="DEBUG"/>
+            <column name="modified_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="modified_time" type="datetime" valueDate="2020-03-05 00:41:25.195000"/>
+            <column name="creation_user_id" type="BIGINT" valueNumeric="1"/>
+            <column name="creation_time" type="datetime" valueDate="2019-03-05 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

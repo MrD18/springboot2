@@ -1,0 +1,70 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="bin" id="13-1">
+        <createTable tableName="biz_data_store_schema_template">
+            <column autoIncrement="true" name="id" type="BIGINT UNSIGNED">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="schema_conf_json" type="LONGTEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_deleted" type="TINYINT(3) UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_time" type="datetime(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="modified_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+            <column name="creation_user_id" type="BIGINT UNSIGNED">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <modifySql dbms="mysql">
+            <append value="ENGINE=INNODB DEFAULT CHARSET utf8mb4 COLLATE utf8mb4_general_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <changeSet author="bin" id="13-2">
+        <insert dbms="mysql" tableName="biz_data_store_schema_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="type" type="VARCHAR(20)" value="log"/>
+            <column name="schema_conf_json" type="LONGTEXT" value="{&quot;fieldDescs&quot;:[{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_message&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_collect_time&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;BIGINT&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_raw_time&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;BIGINT&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_app&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_biz&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_cluster&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_pod_name&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_collect_id&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_collect_type&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_log_tag&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_log_type&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_hostname&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_host_ip&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_log_path&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_line_num&quot;,&quot;nullable&quot;:true,&quot;type&quot;:&quot;BIGINT&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_trace_id&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_span_id&quot;,&quot;nullable&quot;:true,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_parent_span_id&quot;,&quot;nullable&quot;:true,&quot;type&quot;:&quot;VARCHAR&quot;}],&quot;sortColumns&quot;:[&quot;_cw_app&quot;,&quot;_cw_biz&quot;,&quot;_cw_cluster&quot;,&quot;_cw_log_tag&quot;,&quot;_cw_log_type&quot;,&quot;_cw_hostname&quot;],&quot;partitionExpression&quot;:&quot;toDate(_cw_raw_time / 1000)&quot;}"/>
+            <column name="is_deleted" type="TINYINT(3)" valueNumeric="0"/>
+            <column name="creation_user_id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="modified_user_id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="modified_time" type="DATETIME(6)" valueDate="2019-09-20 00:41:25.195000"/>
+            <column name="creation_time" type="DATETIME(6)" valueDate="2019-09-20 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="bin" id="13-3">
+        <insert dbms="mysql" tableName="biz_data_store_schema_template">
+            <column name="id" type="BIGINT UNSIGNED" valueNumeric="2"/>
+            <column name="type" type="VARCHAR(20)" value="metric"/>
+            <column name="schema_conf_json" type="LONGTEXT" value="{&quot;fieldDescs&quot;:[{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_message&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_collect_time&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;BIGINT&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_raw_time&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;BIGINT&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_app&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_biz&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_cluster&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_pod_name&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_collect_id&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_collect_type&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_log_tag&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_log_type&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_hostname&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_host_ip&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_log_path&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_line_num&quot;,&quot;nullable&quot;:true,&quot;type&quot;:&quot;BIGINT&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_trace_id&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_span_id&quot;,&quot;nullable&quot;:true,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_parent_span_id&quot;,&quot;nullable&quot;:true,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_metric_key&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_metric_name&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_metric_value_number&quot;,&quot;nullable&quot;:true,&quot;type&quot;:&quot;DOUBLE&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_metric_value_string&quot;,&quot;nullable&quot;:true,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_metric_value_type&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_metric_type&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;},{&quot;lowCardinality&quot;:false,&quot;name&quot;:&quot;_cw_metric_system&quot;,&quot;nullable&quot;:false,&quot;type&quot;:&quot;VARCHAR&quot;}],&quot;sortColumns&quot;:[&quot;_cw_app&quot;,&quot;_cw_biz&quot;,&quot;_cw_cluster&quot;,&quot;_cw_log_tag&quot;,&quot;_cw_log_type&quot;,&quot;_cw_hostname&quot;,&quot;_cw_metric_key&quot;],&quot;partitionExpression&quot;:&quot;toDate(_cw_raw_time / 1000)&quot;}"/>
+            <column name="is_deleted" type="TINYINT(3)" valueNumeric="0"/>
+            <column name="creation_user_id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="modified_user_id" type="BIGINT UNSIGNED" valueNumeric="1"/>
+            <column name="modified_time" type="DATETIME(6)" valueDate="2019-09-20 00:41:25.195000"/>
+            <column name="creation_time" type="DATETIME(6)" valueDate="2019-09-20 00:41:25.195000"/>
+        </insert>
+    </changeSet>
+    
+    <changeSet author="bin" id="13-4">
+        <addColumn tableName="biz_data_store">
+            <column name="store_type" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

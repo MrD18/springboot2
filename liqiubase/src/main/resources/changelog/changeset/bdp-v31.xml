@@ -1,0 +1,12 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="31-1" author="jamin">
+        <sql dbms="mysql">
+            ALTER TABLE biz_data_query_model_history ADD source char(1) DEFAULT '0' NOT NULL COMMENT '查询来源：0平台数据(仅支持查询)，1全部数据';
+            <comment>新增列</comment>
+        </sql>
+
+
+    </changeSet>
+</databaseChangeLog>

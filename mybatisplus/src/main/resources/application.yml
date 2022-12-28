@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: boot-mybatisplus
+  datasource:
+    url: jdbc:mysql://localhost:3306/harden_0809
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dhao.admin.mapper.BookMapper">
+
+    <select id="findAll"  resultType="com.dhao.admin.entity.Books" >
+        select * from books;
+    </select>
+<!--  useGeneratedKeys:true 开启主键自增     keyProperty:   bookId  具体那个自增   -->
+    <insert id="insert"  useGeneratedKeys="true" keyProperty="bookId" parameterType="com.dhao.admin.entity.Books">
+        insert into books(bookID,bookName,bookCounts,detail)
+        values (#{bookId},#{bookName},#{bookCounts},#{detail})
+    </insert>
+
+</mapper>
